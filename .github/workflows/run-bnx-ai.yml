@@ -1,0 +1,33 @@
+name: Run BNX AI Python
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Enter your prompt for BNX AI'
+        required: true
+        default: 'A Mexican mafioso stands in front of a luxurious villa'
+
+jobs:
+  run-bnx-ai:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate BNX AI URL
+        env:
+          PROMPT: ${{ github.event.inputs.prompt }}
+        run: |
+          echo "Hello! I am BNX AI 1.0 (Python edition)"
+          # Кодируем prompt в URL
+          encoded_prompt=$(python3 -c "import urllib.parse, os; print(urllib.parse.quote(os.environ['PROMPT']))")
+          url="https://bnx.me/?prompt=${encoded_prompt}"
+          echo "[BNX AI] Generated URL: $url"
