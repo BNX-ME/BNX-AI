@@ -27,7 +27,6 @@ jobs:
           PROMPT: ${{ github.event.inputs.prompt }}
         run: |
           echo "Hello! I am BNX AI 1.0 (Python edition)"
-          # Кодируем prompt в URL
           encoded_prompt=$(python3 -c "import urllib.parse, os; print(urllib.parse.quote(os.environ['PROMPT']))")
           url="https://bnx.me/?prompt=${encoded_prompt}"
           echo "[BNX AI] Generated URL: $url"
