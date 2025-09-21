@@ -1,0 +1,14 @@
+{
+  "name": "bnx-ai",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node ./API/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0"
+  },
+  "author": "BNX Payments Limited",
+  "copyright": "BNX Payments Limited",
+  "license": "Apache-2.0"
+}
